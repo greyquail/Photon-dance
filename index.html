@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance of Proton Spinning</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0c0c1d;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 10;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff0080, #00ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #90e0ef;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+        
+        .proton-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 3rem;
+        }
+        
+        .proton-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ff0080 0%, #cc0066 50%, #99004d 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 50px #ff0080,
+                0 0 80px rgba(255, 0, 128, 0.6),
+                0 0 120px rgba(255, 0, 128, 0.3);
+            animation: core-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes core-pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 50%;
+        }
+        
+        .orbit-1 {
+            width: 250px;
+            height: 250px;
+            animation: orbit-spin 8s linear infinite;
+        }
+        
+        .orbit-2 {
+            width: 300px;
+            height: 300px;
+            animation: orbit-spin 12s linear infinite reverse;
+        }
+        
+        .orbit-3 {
+            width: 350px;
+            height: 350px;
+            animation: orbit-spin 16s linear infinite;
+        }
+        
+        .quark {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
+            transform-origin: center;
+        }
+        
+        .quark-1 {
+            top: -10px;
+            left: 50%;
+            margin-left: -10px;
+            background: linear-gradient(45deg, #00ffcc, #009999);
+            animation: quark-pulse 2s ease-in-out infinite;
+        }
+        
+        .quark-2 {
+            top: 50%;
+            right: -10px;
+            margin-top: -10px;
+            background: linear-gradient(45deg, #00ffcc, #006666);
+            animation: quark-pulse 2s ease-in-out infinite 0.4s;
+        }
+        
+        .quark-3 {
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+            background: linear-gradient(45deg, #00ffcc, #003333);
+            animation: quark-pulse 2s ease-in-out infinite 0.8s;
+        }
+        
+        @keyframes quark-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+        
+        @keyframes orbit-spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
+        .spin-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 3px dashed rgba(255, 0, 128, 0.4);
+            border-radius: 50%;
+            animation: ring-spin 6s linear infinite;
+        }
+        
+        @keyframes ring-spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
+        .quantum-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .quantum-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #00ffcc, transparent);
+            animation: quantum-line 3s linear infinite;
+        }
+        
+        @keyframes quantum-line {
+            0% {
+                transform: translateY(-100px) rotate(var(--rot));
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(400px) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+        
+        .text-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 128, 0.1);
+        }
+        
+        .text-line {
+            font-size: 1.4rem;
+            margin: 0.8rem 0;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .photon {
+            color: #00ffcc;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        
+        .ripples {
+            color: #ff0080;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+        }
+        
+        .woven {
+            color: #ffffff;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        
+        .mindful {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            color: #ff69b4;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            animation: mindful-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes mindful-pulse {
+            0%, 100% {
+                opacity: 0.7;
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+            }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: particle-float 20s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .url {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        .control-panel {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .control-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 0, 128, 0.3);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 0, 128, 0.2);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">Dance of Proton</div>
+            <div class="subtitle">Quantum Spin Visualization</div>
+        </div>
+        
+        <div class="proton-container">
+            <div class="spin-ring"></div>
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            
+            <div class="proton-core">
+                <div class="quark quark-1"></div>
+                <div class="quark quark-2"></div>
+                <div class="quark quark-3"></div>
+            </div>
+            
+            <div class="quantum-lines" id="quantum-lines"></div>
+        </div>
+        
+        <div class="text-container">
+            <div class="text-line">LIGHT TRAVELS AS <span class="photon">PHOTONS</span> –</div>
+            <div class="text-line"><span class="ripples">RIPPLES</span> AND <span class="photon">PARTICLES</span></div>
+            <div class="text-line"><span class="woven">WOVEN INTO ONE.</span></div>
+            <div class="mindful">MINDFUL</div>
+        </div>
+        
+        <div class="url">greyquail.github.io</div>
+    </div>
+    
+    <div class="control-panel">
+        <button class="control-btn" id="speed-up">Speed Up</button>
+        <button class="control-btn" id="speed-down">Slow Down</button>
+        <button class="control-btn" id="pause-resume">Pause</button>
+    </div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <script>
+        // Create quantum lines
+        const quantumLines = document.getElementById('quantum-lines');
+        for (let i = 0; i < 20; i++) {
+            const line = document.createElement('div');
+            line.classList.add('quantum-line');
+            line.style.left = Math.random() * 400 + 'px';
+            line.style.setProperty('--rot', Math.random() * 360 + 'deg');
+            line.style.animationDelay = Math.random() * 3 + 's';
+            line.style.opacity = Math.random() * 0.5 + 0.3;
+            quantumLines.appendChild(line);
+        }
+        
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 100; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 3 + 1;
+            const left = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 15 + 10;
+            
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = left + '%';
+            particle.style.animationDelay = delay + 's';
+            particle.style.animationDuration = duration + 's';
+            
+            // Random color
+            const colors = ['rgba(255, 0, 128, 0.3)', 'rgba(0, 255, 204, 0.3)', 'rgba(255, 255, 255, 0.2)'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Animation controls
+        let animationSpeed = 1;
+        let isPaused = false;
+        
+        const speedUpBtn = document.getElementById('speed-up');
+        const speedDownBtn = document.getElementById('speed-down');
+        const pauseResumeBtn = document.getElementById('pause-resume');
+        
+        // Get all animated elements
+        const animatedElements = document.querySelectorAll('*[style*="animation"]');
+        
+        speedUpBtn.addEventListener('click', () => {
+            animationSpeed = Math.min(animationSpeed + 0.5, 3);
+            updateAnimationSpeed();
+        });
+        
+        speedDownBtn.addEventListener('click', () => {
+            animationSpeed = Math.max(animationSpeed - 0.5, 0.5);
+            updateAnimationSpeed();
+        });
+        
+        pauseResumeBtn.addEventListener('click', () => {
+            isPaused = !isPaused;
+            pauseResumeBtn.textContent = isPaused ? 'Resume' : 'Pause';
+            
+            animatedElements.forEach(el => {
+                if (isPaused) {
+                    el.style.animationPlayState = 'paused';
+                } else {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        });
+        
+        function updateAnimationSpeed() {
+            animatedElements.forEach(el => {
+                const computedStyle = window.getComputedStyle(el);
+                const currentAnimation = computedStyle.animation;
+                const currentDuration = computedStyle.animationDuration;
+                
+                if (currentAnimation && currentAnimation !== 'none') {
+                    // Update animation duration based on speed
+                    const baseDuration = parseFloat(currentDuration);
+                    el.style.animationDuration = (baseDuration / animationSpeed) + 's';
+                }
+            });
+        }
+        
+        // Interactive proton core
+        const protonCore = document.querySelector('.proton-core');
+        protonCore.addEventListener('mouseenter', () => {
+            protonCore.style.animationDuration = '2s';
+            protonCore.style.boxShadow = 
+                '0 0 60px #ff0080, ' +
+                '0 0 100px rgba(255, 0, 128, 0.8), ' +
+                '0 0 150px rgba(255, 0, 128, 0.4)';
+        });
+        
+        protonCore.addEventListener('mouseleave', () => {
+            protonCore.style.animationDuration = '4s';
+            protonCore.style.boxShadow = 
+                '0 0 50px #ff0080, ' +
+                '0 0 80px rgba(255, 0, 128, 0.6), ' +
+                '0 0 120px rgba(255, 0, 128, 0.3)';
+        });
+    </script>
+</body>
+</html>
