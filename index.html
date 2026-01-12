@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Infinity Photon Spin</title>
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+}
+
+.ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    filter: blur(0.5px);
+    animation: spin 8s linear infinite;
+}
+
+.ring::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 180, 255, 0.7);
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+}
+
+.ring.gold::before {
+    border-color: rgba(255, 180, 60, 0.8);
+    box-shadow: 0 0 30px rgba(255, 180, 60, 0.9);
+}
+
+.ring.reverse {
+    animation-direction: reverse;
+    animation-duration: 12s;
+}
+
+.core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, gold, orange);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 40px gold;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ring"></div>
+    <div class="ring gold reverse"></div>
+    <div class="core"></div>
+</div>
+
+</body>
+</html>
